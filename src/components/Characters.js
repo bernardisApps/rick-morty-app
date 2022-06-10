@@ -1,19 +1,28 @@
+import { useState } from "react";
+import Character from "./Character";
 
 export default function Characters(props) {
 
 	const {characters, setCharacters} = props;
+	const [ seleccion, setSeleccion ] = useState(null);
 
 	const volver = () => {
 		setCharacters(null);
 	}
 
+	const seleccionar = (select) => {
+		setSeleccion (select);
+	}
+
 	return(
-		<div className="characters">
+
+		seleccion === null ? (
+			<div className="characters">
 			<h1>Personajes</h1>
 			<span className="back-home" onClick={volver}>Volver a la home</span>
 			<div className="container-characters">
 				{characters.map((character, index) => (
-					<div className="character-container" key={index}>
+					<div className="character-container" key={index} onClick={() => seleccionar(character)}>
 						<div>
 							<img src={character.image} alt={character.name} />
 						</div>
@@ -46,5 +55,10 @@ export default function Characters(props) {
 			</div>
 			<span className="back-home" onClick={volver}>Volver a la home</span>
 		</div>
+		) : (
+			<Character seleccion = {seleccion} setSeleccion = {setSeleccion}></Character>
 		)	
+		)
+
+		
 }

@@ -24,8 +24,7 @@ function App() {
             <button onClick={restApi} className='btn-search'>Buscar Personajes</button>
           </>
         )}
-       
-        
+       <h6>App realizada por Matias Bernardis</h6> 
       </header>
     </div>
   );
